@@ -357,7 +357,7 @@ export default function DailyDocumentation() {
           <div className="project-meta">
             <div className="project-label">Active Project</div>
             <div className="project-name">RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu</div>
-            <div className="project-id mono">JOB #OT-JOB-2026-001</div>
+            <div className="project-id mono">JOB #OT-JOB-2026-001 · Client: Liyann Construction and Services</div>
           </div>
         </div>
       </header>
