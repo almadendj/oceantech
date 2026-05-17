@@ -203,6 +203,7 @@ export const PROJECT: Project = {
         {
           title: "Day 4 — Sinker Installation at 14–15 m",
           desc: "Three sinkers installed within the 14–15 m depth range. Following completion of diving operations, 3 sinkers were organised and pre-staged on deck in readiness for the following day's installation.",
+          youtubeId: "oJjmHpFvw3E",
           color1: "#154360",
           color2: "#0B2740",
         },
@@ -235,6 +236,7 @@ export const PROJECT: Project = {
         {
           title: "Day 5 — Installation & Deep-Section Repositioning",
           desc: "Three sinkers installed at 8–14 m depth. One sinker relocated from the 2 m position to 25 m to meet project placement requirements. Three sinkers pre-staged on deck at end of day.",
+          youtubeId: "qTKOcdh2fjk",
           color1: "#1A5276",
           color2: "#0D2F45",
         },
@@ -267,6 +269,7 @@ export const PROJECT: Project = {
         {
           title: "Day 6 — Deep Installation & Zone Consolidation",
           desc: "Three sinkers installed at 25 m depth. Five sinkers transferred and repositioned to the 14 m depth zone as part of the ongoing pipeline consolidation effort.",
+          youtubeId: "LgXNeXkSLk8",
           color1: "#1B4F72",
           color2: "#0A1D2E",
         },
@@ -299,6 +302,7 @@ export const PROJECT: Project = {
         {
           title: "Day 7 — Deep Sinker Installation & Shallow Repositioning",
           desc: "Four sinkers installed at 25 m depth. Two sinkers relocated from the 2 m position to 14 m depth as part of the ongoing pipeline consolidation.",
+          youtubeId: "Bg6v3f5PUFs",
           color1: "#21618C",
           color2: "#0E2D42",
         },
@@ -329,6 +333,7 @@ export const PROJECT: Project = {
         {
           title: "Day 8 — Deep Installation & Full-Depth Consolidation",
           desc: "One sinker installed at depths exceeding 30 m. All sinkers positioned at 25 m and beyond were interconnected and secured to prevent displacement, ensuring structural integrity across the deep section.",
+          youtubeId: "utGbkLsvH0Y",
           color1: "#1A2F45",
           color2: "#0A1520",
         },
