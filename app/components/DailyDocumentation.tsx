@@ -394,7 +394,7 @@ export default function DailyDocumentation() {
               </span>
             </div>
             <div className="project-name">RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu</div>
-            <div className="project-id mono">JOB #OT-JOB-2026-001 · Confidential Client</div>
+            <div className="project-id mono">JOB #OT-JOB-2026-001</div>
           </div>
         </div>
       </header>
