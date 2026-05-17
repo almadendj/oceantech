@@ -899,4 +899,11 @@ html, body {
   .lb-nav-next { right: -38px; }
   .lb-nav { width: 34px; height: 34px; }
   .photo-thumb-img { width: 130px; height: 98px; }
+  /* Compact day chips on mobile */
+  .day-btn { padding: 7px 10px; }
+  .day-btn .day-num { font-size: 10px; }
+  .day-btn .day-date { font-size: 12px; }
+  .day-strip { gap: 6px; }
+  .subbar-inner { flex-wrap: nowrap; }
+  .gallery-link { padding: 4px 9px; font-size: 11px; }
 }
