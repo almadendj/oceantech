@@ -13,6 +13,11 @@ export interface Task {
   done: boolean;
 }
 
+export interface Photo {
+  src: string;
+  label: string;
+}
+
 export interface Day {
   id: number;
   date: string;
@@ -25,6 +30,7 @@ export interface Day {
   teamSize: number;
   sinkersStaged?: number;
   videos: Video[];
+  photos: Photo[];
   tasks: Task[];
   notes: string;
   sig?: string;
@@ -33,6 +39,38 @@ export interface Day {
 export interface Project {
   days: Day[];
 }
+
+export const ALL_SINKER_PHOTOS: Photo[] = [
+  { src: "/Sinker_01_GOPR0013.JPG", label: "Sinker 01" },
+  { src: "/Sinker_02_GOPR0014.JPG", label: "Sinker 02" },
+  { src: "/Sinker_03_GOPR0015.JPG", label: "Sinker 03" },
+  { src: "/Sinker_04_GOPR0016.JPG", label: "Sinker 04" },
+  { src: "/Sinker_05_GOPR0017.JPG", label: "Sinker 05" },
+  { src: "/Sinker_06_GOPR0018.JPG", label: "Sinker 06" },
+  { src: "/Sinker_07_GOPR0019.JPG", label: "Sinker 07" },
+  { src: "/Sinker_08_GOPR0020.JPG", label: "Sinker 08" },
+  { src: "/Sinker_09_GOPR0021.JPG", label: "Sinker 09" },
+  { src: "/Sinker_10_GOPR0022.JPG", label: "Sinker 10" },
+  { src: "/Sinker_11_GOPR0023.JPG", label: "Sinker 11" },
+  { src: "/Sinker_12_GOPR0024.JPG", label: "Sinker 12" },
+  { src: "/Sinker_13_GOPR0025.JPG", label: "Sinker 13" },
+  { src: "/Sinker_14_GOPR0026.JPG", label: "Sinker 14" },
+  { src: "/Sinker_15_GOPR0027.JPG", label: "Sinker 15" },
+  { src: "/Sinker_16-17_GOPR0028.JPG", label: "Sinkers 16–17" },
+  { src: "/Sinker_18_GOPR0029.JPG", label: "Sinker 18" },
+  { src: "/Sinker_19_GOPR0030.JPG", label: "Sinker 19" },
+  { src: "/Sinker_20_GOPR0031.JPG", label: "Sinker 20" },
+  { src: "/Sinker_21_GOPR0032.JPG", label: "Sinker 21" },
+  { src: "/Sinker_22-23_GOPR0033.JPG", label: "Sinkers 22–23" },
+  { src: "/Sinker_24_GOPR0034.JPG", label: "Sinker 24" },
+  { src: "/Sinker_25_GOPR0035.JPG", label: "Sinker 25" },
+  { src: "/Sinker_26_GOPR0036.JPG", label: "Sinker 26" },
+  { src: "/Sinker_27_GOPR0037.JPG", label: "Sinker 27" },
+  { src: "/Sinker_28_GOPR0038.JPG", label: "Sinker 28" },
+  { src: "/Sinker_29_GOPR0039.JPG", label: "Sinker 29" },
+  { src: "/Sinker_30_GOPR0040.JPG", label: "Sinker 30" },
+  { src: "/Sinker_30b_GOPR0041.JPG", label: "Sinker 30 (Alt. View)" },
+];
 
 export const PROJECT: Project = {
   days: [
@@ -46,6 +84,18 @@ export const PROJECT: Project = {
       sinkersTotal: 10,
       depthRange: "3–10 m",
       teamSize: 7,
+      photos: [
+        { src: "/Sinker_01_GOPR0013.JPG", label: "Sinker 01" },
+        { src: "/Sinker_02_GOPR0014.JPG", label: "Sinker 02" },
+        { src: "/Sinker_03_GOPR0015.JPG", label: "Sinker 03" },
+        { src: "/Sinker_04_GOPR0016.JPG", label: "Sinker 04" },
+        { src: "/Sinker_05_GOPR0017.JPG", label: "Sinker 05" },
+        { src: "/Sinker_06_GOPR0018.JPG", label: "Sinker 06" },
+        { src: "/Sinker_07_GOPR0019.JPG", label: "Sinker 07" },
+        { src: "/Sinker_08_GOPR0020.JPG", label: "Sinker 08" },
+        { src: "/Sinker_09_GOPR0021.JPG", label: "Sinker 09" },
+        { src: "/Sinker_10_GOPR0022.JPG", label: "Sinker 10" },
+      ],
       videos: [
         {
           title: "Day 1 — Full-Day Sinker Installation",
@@ -75,6 +125,10 @@ export const PROJECT: Project = {
       depthRange: "14–25 m",
       teamSize: 7,
       sinkersStaged: 3,
+      photos: [
+        { src: "/Sinker_11_GOPR0023.JPG", label: "Sinker 11" },
+        { src: "/Sinker_12_GOPR0024.JPG", label: "Sinker 12" },
+      ],
       videos: [
         {
           title: "Day 2 — Deep Sinker Placements",
@@ -104,6 +158,12 @@ export const PROJECT: Project = {
       depthRange: "16–30 m",
       teamSize: 7,
       sinkersStaged: 4,
+      photos: [
+        { src: "/Sinker_13_GOPR0025.JPG", label: "Sinker 13" },
+        { src: "/Sinker_14_GOPR0026.JPG", label: "Sinker 14" },
+        { src: "/Sinker_15_GOPR0027.JPG", label: "Sinker 15" },
+        { src: "/Sinker_16-17_GOPR0028.JPG", label: "Sinkers 16–17" },
+      ],
       videos: [
         {
           title: "Day 3 — Surface-to-Seabed Transfer & Installation",
@@ -134,6 +194,11 @@ export const PROJECT: Project = {
       depthRange: "14–15 m",
       teamSize: 7,
       sinkersStaged: 3,
+      photos: [
+        { src: "/Sinker_16-17_GOPR0028.JPG", label: "Sinkers 16–17" },
+        { src: "/Sinker_18_GOPR0029.JPG", label: "Sinker 18" },
+        { src: "/Sinker_19_GOPR0030.JPG", label: "Sinker 19" },
+      ],
       videos: [
         {
           title: "Day 4 — Sinker Installation at 14–15 m",
@@ -161,6 +226,11 @@ export const PROJECT: Project = {
       depthRange: "8–25 m",
       teamSize: 7,
       sinkersStaged: 3,
+      photos: [
+        { src: "/Sinker_20_GOPR0031.JPG", label: "Sinker 20" },
+        { src: "/Sinker_21_GOPR0032.JPG", label: "Sinker 21" },
+        { src: "/Sinker_22-23_GOPR0033.JPG", label: "Sinkers 22–23" },
+      ],
       videos: [
         {
           title: "Day 5 — Installation & Deep-Section Repositioning",
@@ -188,6 +258,11 @@ export const PROJECT: Project = {
       sinkersTotal: 25,
       depthRange: "14–25 m",
       teamSize: 7,
+      photos: [
+        { src: "/Sinker_22-23_GOPR0033.JPG", label: "Sinkers 22–23" },
+        { src: "/Sinker_24_GOPR0034.JPG", label: "Sinker 24" },
+        { src: "/Sinker_25_GOPR0035.JPG", label: "Sinker 25" },
+      ],
       videos: [
         {
           title: "Day 6 — Deep Installation & Zone Consolidation",
@@ -214,6 +289,12 @@ export const PROJECT: Project = {
       sinkersTotal: 29,
       depthRange: "14–25 m",
       teamSize: 7,
+      photos: [
+        { src: "/Sinker_26_GOPR0036.JPG", label: "Sinker 26" },
+        { src: "/Sinker_27_GOPR0037.JPG", label: "Sinker 27" },
+        { src: "/Sinker_28_GOPR0038.JPG", label: "Sinker 28" },
+        { src: "/Sinker_29_GOPR0039.JPG", label: "Sinker 29" },
+      ],
       videos: [
         {
           title: "Day 7 — Deep Sinker Installation & Shallow Repositioning",
@@ -240,6 +321,10 @@ export const PROJECT: Project = {
       sinkersTotal: 30,
       depthRange: "25–30+ m",
       teamSize: 7,
+      photos: [
+        { src: "/Sinker_30_GOPR0040.JPG", label: "Sinker 30" },
+        { src: "/Sinker_30b_GOPR0041.JPG", label: "Sinker 30 (Alt. View)" },
+      ],
       videos: [
         {
           title: "Day 8 — Deep Installation & Full-Depth Consolidation",

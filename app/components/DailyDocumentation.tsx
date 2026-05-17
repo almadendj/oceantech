@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState, useCallback } from "react";
-import { PROJECT, type Day, type Video, type DayStatus } from "@/app/data/project";
+import { PROJECT, type Day, type Video, type DayStatus, type Photo } from "@/app/data/project";
+import Lightbox from "@/app/components/Lightbox";
 
 /* ── icons ──────────────────────────────────────────────────────────── */
 function IconCheck({ size = 10 }: { size?: number }) {
@@ -155,6 +157,7 @@ function DayContent({
   hasNext,
   prevDay,
   nextDay,
+  onPhotoOpen,
 }: {
   day: Day;
   onPrev: () => void;
@@ -163,6 +166,7 @@ function DayContent({
   hasNext: boolean;
   prevDay?: Day;
   nextDay?: Day;
+  onPhotoOpen: (photos: Photo[], index: number) => void;
 }) {
   const completedCount = day.tasks.filter((t) => t.done).length;
   const isSingleVideo = day.videos.length === 1;
@@ -212,6 +216,33 @@ function DayContent({
           <VideoCard key={i} video={v} index={i} dayId={day.id} featured={isSingleVideo} />
         ))}
       </div>
+
+      {day.photos.length > 0 && (
+        <>
+          <div className="section-head">
+            <h2 className="section-title">Photo Documentation</h2>
+            <div className="section-meta">{day.photos.length} photo{day.photos.length !== 1 ? "s" : ""}</div>
+          </div>
+          <div className="photo-strip-wrap">
+            <div className="photo-strip">
+              {day.photos.map((p, i) => (
+                <button
+                  key={i}
+                  className="photo-thumb-btn"
+                  onClick={() => onPhotoOpen(day.photos, i)}
+                  type="button"
+                  aria-label={`View ${p.label}`}
+                >
+                  <div className="photo-thumb-img">
+                    <Image src={p.src} alt={p.label} fill style={{ objectFit: "cover" }} sizes="160px" />
+                  </div>
+                  <span className="photo-thumb-label mono">{p.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
 
       <div className="section-head">
         <h2 className="section-title">Day Summary</h2>
@@ -288,6 +319,7 @@ function DayContent({
 export default function DailyDocumentation() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [lightbox, setLightbox] = useState<{ photos: Photo[]; index: number } | null>(null);
   const stripRef = useRef<HTMLDivElement>(null);
   const isAnimating = useRef(false);
 
@@ -370,6 +402,15 @@ export default function DailyDocumentation() {
       <div className="subbar">
         <div className="subbar-inner">
           <div className="subbar-label">Daily Log</div>
+          <Link href="/sinkers" className="gallery-link">
+            <svg viewBox="0 0 16 16" width={13} height={13} fill="none" style={{ flexShrink: 0 }}>
+              <rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
+              <rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
+              <rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
+              <rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
+            </svg>
+            Sinker Gallery
+          </Link>
           <div className="day-strip-wrap">
             <div className="day-strip" ref={stripRef}>
               {PROJECT.days.map((d, i) => (
@@ -403,9 +444,19 @@ export default function DailyDocumentation() {
             hasNext={currentIdx < PROJECT.days.length - 1}
             prevDay={PROJECT.days[currentIdx - 1]}
             nextDay={PROJECT.days[currentIdx + 1]}
+            onPhotoOpen={(photos, index) => setLightbox({ photos, index })}
           />
         </div>
       </main>
+
+      {lightbox && (
+        <Lightbox
+          photos={lightbox.photos}
+          index={lightbox.index}
+          onClose={() => setLightbox(null)}
+          onChange={(index) => setLightbox({ ...lightbox, index })}
+        />
+      )}
 
       <footer className="app-footer">
         <div className="mono">OT-DOC-2026-001 · 8 Days Logged · 30 Sinkers Installed · Project Complete</div>
