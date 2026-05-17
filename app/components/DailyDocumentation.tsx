@@ -355,7 +355,12 @@ export default function DailyDocumentation() {
             </div>
           </div>
           <div className="project-meta">
-            <div className="project-label">Active Project</div>
+            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 6 }}>
+              <span className="badge badge-complete" style={{ fontSize: 11, padding: "3px 10px" }}>
+                <IconCheck size={12} />
+                Project Complete
+              </span>
+            </div>
             <div className="project-name">RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu</div>
             <div className="project-id mono">JOB #OT-JOB-2026-001 · Client: Liyann Construction and Services</div>
           </div>
@@ -403,7 +408,7 @@ export default function DailyDocumentation() {
       </main>
 
       <footer className="app-footer">
-        <div className="mono">OT-DOC-2026-001 · 3 Days Logged · Internal Use Only</div>
+        <div className="mono">OT-DOC-2026-001 · 8 Days Logged · 30 Sinkers Installed · Project Complete</div>
         <div className="footer-address">
           <span>© 2026 Oceantech Offshore Diving Services</span>
           <span className="footer-sep">·</span>
