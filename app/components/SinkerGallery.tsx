@@ -2,21 +2,44 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { ALL_SINKER_PHOTOS, PROJECT } from "@/app/data/project";
+import { useState, useMemo } from "react";
+import { SINKER_GALLERY, PROJECT } from "@/app/data/project";
+import type { Photo } from "@/app/data/project";
 import Lightbox from "@/app/components/Lightbox";
 
 export default function SinkerGallery() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  // Build a lookup: src → day number(s)
-  const srcToDays: Record<string, number[]> = {};
-  PROJECT.days.forEach((day) => {
-    day.photos.forEach((p) => {
-      if (!srcToDays[p.src]) srcToDays[p.src] = [];
-      if (!srcToDays[p.src].includes(day.id)) srcToDays[p.src].push(day.id);
+  // Build flat photo list (no gauges) for lightbox
+  const allPhotos: Photo[] = useMemo(
+    () =>
+      SINKER_GALLERY.flatMap((item) =>
+        item.type === "sinker" ? item.group.photos : []
+      ),
+    []
+  );
+
+  // Total photo count
+  const totalPhotos = allPhotos.length;
+
+  // Map src → global lightbox index
+  const srcToGlobalIndex = useMemo(() => {
+    const map: Record<string, number> = {};
+    allPhotos.forEach((p, i) => { map[p.src] = i; });
+    return map;
+  }, [allPhotos]);
+
+  // Build lookup: src → day number(s)
+  const srcToDays: Record<string, number[]> = useMemo(() => {
+    const map: Record<string, number[]> = {};
+    PROJECT.days.forEach((day) => {
+      day.photos.forEach((p) => {
+        if (!map[p.src]) map[p.src] = [];
+        if (!map[p.src].includes(day.id)) map[p.src].push(day.id);
+      });
     });
-  });
+    return map;
+  }, []);
 
   return (
     <>
@@ -66,7 +89,7 @@ export default function SinkerGallery() {
             <div className="subbar-label">Sinker Gallery</div>
           </div>
           <div className="mono" style={{ fontSize: 12, color: "var(--text-muted)" }}>
-            {ALL_SINKER_PHOTOS.length} photos · 30 sinkers
+            {totalPhotos} photos · 30 sinkers
           </div>
         </div>
       </div>
@@ -75,45 +98,114 @@ export default function SinkerGallery() {
         <div className="gallery-page-head">
           <h1 className="gallery-page-title">Sinker Photo Documentation</h1>
           <p className="gallery-page-sub">
-            Complete photographic record of all 30 RO sinkers installed across 8 operational days.
-            Click any photo to enlarge. Use arrow keys to navigate.
+            Complete photographic record of all 30 RO sinkers. Each sinker shows its labeled photo,
+            alternate views, and original GOPRO footage. Click any image to enlarge.
           </p>
         </div>
 
-        <div className="sinker-grid">
-          {ALL_SINKER_PHOTOS.map((photo, i) => {
-            const days = srcToDays[photo.src] ?? [];
-            return (
-              <button
-                key={i}
-                className="sinker-card"
-                onClick={() => setLightboxIndex(i)}
-                type="button"
-                aria-label={`View ${photo.label}`}
-              >
-                <div className="sinker-card-img">
-                  <Image
-                    src={photo.src}
-                    alt={photo.label}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    sizes="(max-width: 640px) 50vw, (max-width: 960px) 33vw, 20vw"
-                  />
-                  <div className="sinker-card-overlay">
-                    <svg viewBox="0 0 24 24" width={22} height={22} fill="none">
-                      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+        <div className="sg-list">
+          {SINKER_GALLERY.map((item, itemIndex) => {
+            if (item.type === "gauge") {
+              return (
+                <div key={`gauge-${itemIndex}`} className="sg-gauge-banner">
+                  <div className="sg-gauge-img-wrap">
+                    <Image
+                      src={item.src}
+                      alt={item.label}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="100vw"
+                    />
+                    <div className="sg-gauge-overlay" />
+                  </div>
+                  <div className="sg-gauge-info">
+                    <div className="sg-gauge-depth">{item.depth}</div>
+                    <div className="sg-gauge-label">Depth Gauge Reading</div>
                   </div>
                 </div>
-                <div className="sinker-card-body">
-                  <span className="sinker-card-label mono">{photo.label}</span>
-                  {days.length > 0 && (
-                    <span className="sinker-card-day">
-                      Day {days.join(", ")}
-                    </span>
+              );
+            }
+
+            const { group } = item;
+            const primary = group.photos[0];
+            const rest = group.photos.slice(1);
+
+            // Days associated with any photo in this group
+            const days = Array.from(
+              new Set(group.photos.flatMap((p) => srcToDays[p.src] ?? []))
+            ).sort((a, b) => a - b);
+
+            return (
+              <div key={`sinker-${itemIndex}`} className="sg-group">
+                <div className="sg-group-head">
+                  <div className="sg-group-label mono">{group.label}</div>
+                  <div className="sg-group-meta">
+                    {days.length > 0 && (
+                      <span className="sg-group-day">
+                        Day {days.join(", ")}
+                      </span>
+                    )}
+                    <span className="sg-group-count">{group.photos.length} photos</span>
+                  </div>
+                </div>
+
+                <div className="sg-group-photos">
+                  {/* Primary photo — large */}
+                  <button
+                    className="sg-primary-btn"
+                    onClick={() => setLightboxIndex(srcToGlobalIndex[primary.src])}
+                    type="button"
+                    aria-label={`View ${primary.label}`}
+                  >
+                    <div className="sg-primary-img">
+                      <Image
+                        src={primary.src}
+                        alt={primary.label}
+                        fill
+                        style={{ objectFit: "cover" }}
+                        sizes="(max-width: 640px) 90vw, (max-width: 960px) 50vw, 35vw"
+                      />
+                      <div className="sg-primary-overlay">
+                        <svg viewBox="0 0 24 24" width={24} height={24} fill="none">
+                          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="sg-primary-caption mono">{primary.label}</div>
+                  </button>
+
+                  {/* Additional photos — thumbnail grid */}
+                  {rest.length > 0 && (
+                    <div className="sg-thumbs">
+                      {rest.map((photo) => (
+                        <button
+                          key={photo.src}
+                          className="sg-thumb-btn"
+                          onClick={() => setLightboxIndex(srcToGlobalIndex[photo.src])}
+                          type="button"
+                          aria-label={`View ${photo.label}`}
+                        >
+                          <div className="sg-thumb-img">
+                            <Image
+                              src={photo.src}
+                              alt={photo.label}
+                              fill
+                              style={{ objectFit: "cover" }}
+                              sizes="(max-width: 640px) 40vw, (max-width: 960px) 22vw, 15vw"
+                            />
+                            <div className="sg-thumb-overlay">
+                              <svg viewBox="0 0 24 24" width={16} height={16} fill="none">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div className="sg-thumb-label mono">{photo.label}</div>
+                        </button>
+                      ))}
+                    </div>
                   )}
                 </div>
-              </button>
+              </div>
             );
           })}
         </div>
@@ -130,7 +222,7 @@ export default function SinkerGallery() {
 
       {lightboxIndex !== null && (
         <Lightbox
-          photos={ALL_SINKER_PHOTOS}
+          photos={allPhotos}
           index={lightboxIndex}
           onClose={() => setLightboxIndex(null)}
           onChange={setLightboxIndex}
