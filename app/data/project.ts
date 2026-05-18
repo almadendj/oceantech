@@ -71,8 +71,6 @@ export const SINKER_GALLERY: GalleryItem[] = [
       label: "Sinker 01",
       photos: [
         { src: "/Sinker_1.jpg", label: "Sinker 01" },
-        { src: "/Sinker_30_GOPR0040.JPG", label: "Sinker 01 — GOPRO Original" },
-        { src: "/Sinker_30b_GOPR0041.JPG", label: "Sinker 01 — GOPRO Alt. View" },
       ],
       timestamps: [{ label: "Sinker 01", seconds: 66 }],
     },
@@ -84,7 +82,6 @@ export const SINKER_GALLERY: GalleryItem[] = [
       photos: [
         { src: "/Sinker_2.jpg", label: "Sinker 02" },
         { src: "/Sinker_2_w_Label.jpg", label: "Sinker 02 — Labeled" },
-        { src: "/Sinker_29_GOPR0039.JPG", label: "Sinker 02 — GOPRO Original" },
       ],
       timestamps: [
         { label: "Sinker 02", seconds: 75 },
@@ -99,7 +96,6 @@ export const SINKER_GALLERY: GalleryItem[] = [
       photos: [
         { src: "/Sinker_3.jpg", label: "Sinker 03" },
         { src: "/Sinker_3_w_Label.jpg", label: "Sinker 03 — Labeled" },
-        { src: "/Sinker_28_GOPR0038.JPG", label: "Sinker 03 — GOPRO Original" },
       ],
       timestamps: [
         { label: "Sinker 03", seconds: 103 },
@@ -120,7 +116,6 @@ export const SINKER_GALLERY: GalleryItem[] = [
       label: "Sinker 04",
       photos: [
         { src: "/Sinker_4.jpg", label: "Sinker 04" },
-        { src: "/Sinker_27_GOPR0037.JPG", label: "Sinker 04 — GOPRO Original" },
       ],
       timestamps: [{ label: "Sinker 04", seconds: 204 }],
     },
@@ -131,7 +126,6 @@ export const SINKER_GALLERY: GalleryItem[] = [
       label: "Sinker 05",
       photos: [
         { src: "/Sinker_5.jpg", label: "Sinker 05" },
-        { src: "/Sinker_26_GOPR0036.JPG", label: "Sinker 05 — GOPRO Original" },
       ],
       timestamps: [{ label: "Sinker 05", seconds: 223 }],
     },
@@ -145,7 +139,6 @@ export const SINKER_GALLERY: GalleryItem[] = [
         { src: "/Sinker_6b.jpg", label: "Sinker 06 — Alt. View" },
         { src: "/Sinker_6_w_Label.jpg", label: "Sinker 06 — Labeled" },
         { src: "/Sinker_6_w_Label_b.jpg", label: "Sinker 06 — Labeled Alt." },
-        { src: "/Sinker_25_GOPR0035.JPG", label: "Sinker 06 — GOPRO Original" },
       ],
       timestamps: [
         { label: "Sinker 06", seconds: 247 },
@@ -163,7 +156,6 @@ export const SINKER_GALLERY: GalleryItem[] = [
         { src: "/Sinker_7.jpg", label: "Sinker 07" },
         { src: "/Sinker_7_w_Label.jpg", label: "Sinker 07 — Labeled" },
         { src: "/Sinker_7_w_Label_b.jpg", label: "Sinker 07 — Labeled Alt." },
-        { src: "/Sinker_24_GOPR0034.JPG", label: "Sinker 07 — GOPRO Original" },
       ],
       timestamps: [
         { label: "Sinker 07", seconds: 278 },
@@ -181,6 +173,8 @@ export const SINKER_GALLERY: GalleryItem[] = [
         { src: "/Sinker_8_and_9_b.jpg", label: "Sinkers 08–09 — Alt. View" },
         { src: "/Sinker_8_w_Label.jpg", label: "Sinker 08 — Labeled" },
         { src: "/Sinker_9_w_Label.jpg", label: "Sinker 09 — Labeled" },
+        { src: "/Sinker_26_GOPR0036.JPG", label: "Sinker 08 — GOPRO Original" },
+        { src: "/Sinker_25_GOPR0035.JPG", label: "Sinker 09 — GOPRO Original" },
         { src: "/Sinker_22-23_GOPR0033.JPG", label: "Sinkers 08–09 — GOPRO Original" },
       ],
       timestamps: [
