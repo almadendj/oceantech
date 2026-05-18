@@ -2,15 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useMemo } from "react";
-import { SINKER_GALLERY, PROJECT } from "@/app/data/project";
-import type { Photo } from "@/app/data/project";
+import { useState, useMemo, useRef, useCallback } from "react";
+import { SINKER_GALLERY, FULL_VIDEO_ID, PROJECT } from "@/app/data/project";
+import type { Photo, Timestamp } from "@/app/data/project";
 import Lightbox from "@/app/components/Lightbox";
+
+function formatTime(s: number): string {
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return `${m}:${sec.toString().padStart(2, "0")}`;
+}
 
 export default function SinkerGallery() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [activeSeconds, setActiveSeconds] = useState<number | null>(null);
+  const videoRef = useRef<HTMLDivElement>(null);
+  const indexListRef = useRef<HTMLDivElement>(null);
 
-  // Build flat photo list (no gauges) for lightbox
+  // Flat photo list for lightbox
   const allPhotos: Photo[] = useMemo(
     () =>
       SINKER_GALLERY.flatMap((item) =>
@@ -19,17 +28,25 @@ export default function SinkerGallery() {
     []
   );
 
-  // Total photo count
+  // Flat timestamp list for the video index sidebar
+  const allTimestamps: Timestamp[] = useMemo(
+    () =>
+      SINKER_GALLERY.flatMap((item) =>
+        item.type === "sinker"
+          ? item.group.timestamps ?? []
+          : item.timestamps ?? []
+      ),
+    []
+  );
+
   const totalPhotos = allPhotos.length;
 
-  // Map src → global lightbox index
   const srcToGlobalIndex = useMemo(() => {
     const map: Record<string, number> = {};
     allPhotos.forEach((p, i) => { map[p.src] = i; });
     return map;
   }, [allPhotos]);
 
-  // Build lookup: src → day number(s)
   const srcToDays: Record<string, number[]> = useMemo(() => {
     const map: Record<string, number[]> = {};
     PROJECT.days.forEach((day) => {
@@ -40,6 +57,22 @@ export default function SinkerGallery() {
     });
     return map;
   }, []);
+
+  const seekTo = useCallback((seconds: number) => {
+    setActiveSeconds(seconds);
+    videoRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Scroll the active item into view in the index list
+    setTimeout(() => {
+      if (indexListRef.current) {
+        const active = indexListRef.current.querySelector<HTMLElement>("[data-active='true']");
+        active?.scrollIntoView({ block: "nearest" });
+      }
+    }, 100);
+  }, []);
+
+  const iframeSrc = activeSeconds !== null
+    ? `https://www.youtube.com/embed/${FULL_VIDEO_ID}?start=${activeSeconds}&autoplay=1`
+    : `https://www.youtube.com/embed/${FULL_VIDEO_ID}`;
 
   return (
     <>
@@ -98,11 +131,67 @@ export default function SinkerGallery() {
         <div className="gallery-page-head">
           <h1 className="gallery-page-title">Sinker Photo Documentation</h1>
           <p className="gallery-page-sub">
-            Complete photographic record of all 30 RO sinkers. Each sinker shows its labeled photo,
-            alternate views, and original GOPRO footage. Click any image to enlarge.
+            Complete photographic record of all 30 RO sinkers. Click any image to enlarge,
+            or use the video index to jump to a specific sinker in the full documentation video.
           </p>
         </div>
 
+        {/* ── Video section ────────────────────────────────────────── */}
+        <div ref={videoRef} className="sg-video-section">
+          <div className="sg-video-player-wrap">
+            <div className="sg-video-player">
+              <iframe
+                key={activeSeconds ?? "init"}
+                src={iframeSrc}
+                title="Sinker Installation — Full Documentation Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+            <div className="sg-video-caption">
+              <span className="mono" style={{ fontSize: 11, color: "var(--text-muted)" }}>
+                Full Documentation Video · Sinkers 01–30
+              </span>
+              {activeSeconds !== null && (
+                <button
+                  className="sg-video-reset"
+                  onClick={() => setActiveSeconds(null)}
+                  type="button"
+                >
+                  ↺ Reset to start
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className="sg-video-index">
+            <div className="sg-video-index-head">
+              <span className="sg-video-index-title">Video Index</span>
+              <span className="mono" style={{ fontSize: 10, color: "var(--text-muted)" }}>
+                {allTimestamps.length} chapters
+              </span>
+            </div>
+            <div className="sg-video-index-list" ref={indexListRef}>
+              {allTimestamps.map((ts, i) => {
+                const isActive = ts.seconds === activeSeconds;
+                return (
+                  <button
+                    key={i}
+                    className={`sg-ts-item${isActive ? " sg-ts-active" : ""}`}
+                    data-active={isActive ? "true" : undefined}
+                    onClick={() => seekTo(ts.seconds)}
+                    type="button"
+                  >
+                    <span className="sg-ts-time mono">{formatTime(ts.seconds)}</span>
+                    <span className="sg-ts-label">{ts.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Sinker groups ─────────────────────────────────────────── */}
         <div className="sg-list">
           {SINKER_GALLERY.map((item, itemIndex) => {
             if (item.type === "gauge") {
@@ -122,6 +211,18 @@ export default function SinkerGallery() {
                     <div className="sg-gauge-depth">{item.depth}</div>
                     <div className="sg-gauge-label">Depth Gauge Reading</div>
                   </div>
+                  {item.timestamps && item.timestamps.length > 0 && (
+                    <button
+                      className="sg-gauge-ts-btn"
+                      onClick={() => seekTo(item.timestamps![0].seconds)}
+                      type="button"
+                    >
+                      <svg viewBox="0 0 16 16" width={10} height={10} fill="currentColor">
+                        <path d="M4 2.5l9 5.5-9 5.5V2.5z" />
+                      </svg>
+                      {formatTime(item.timestamps[0].seconds)}
+                    </button>
+                  )}
                 </div>
               );
             }
@@ -129,8 +230,8 @@ export default function SinkerGallery() {
             const { group } = item;
             const primary = group.photos[0];
             const rest = group.photos.slice(1);
+            const firstTs = group.timestamps?.[0];
 
-            // Days associated with any photo in this group
             const days = Array.from(
               new Set(group.photos.flatMap((p) => srcToDays[p.src] ?? []))
             ).sort((a, b) => a - b);
@@ -140,17 +241,27 @@ export default function SinkerGallery() {
                 <div className="sg-group-head">
                   <div className="sg-group-label mono">{group.label}</div>
                   <div className="sg-group-meta">
+                    {firstTs && (
+                      <button
+                        className="sg-ts-badge"
+                        onClick={() => seekTo(firstTs.seconds)}
+                        type="button"
+                        title={`Jump to ${firstTs.label} in video`}
+                      >
+                        <svg viewBox="0 0 16 16" width={9} height={9} fill="currentColor">
+                          <path d="M4 2.5l9 5.5-9 5.5V2.5z" />
+                        </svg>
+                        {formatTime(firstTs.seconds)}
+                      </button>
+                    )}
                     {days.length > 0 && (
-                      <span className="sg-group-day">
-                        Day {days.join(", ")}
-                      </span>
+                      <span className="sg-group-day">Day {days.join(", ")}</span>
                     )}
                     <span className="sg-group-count">{group.photos.length} photos</span>
                   </div>
                 </div>
 
                 <div className="sg-group-photos">
-                  {/* Primary photo — large */}
                   <button
                     className="sg-primary-btn"
                     onClick={() => setLightboxIndex(srcToGlobalIndex[primary.src])}
@@ -174,7 +285,6 @@ export default function SinkerGallery() {
                     <div className="sg-primary-caption mono">{primary.label}</div>
                   </button>
 
-                  {/* Additional photos — thumbnail grid */}
                   {rest.length > 0 && (
                     <div className="sg-thumbs">
                       {rest.map((photo) => (
