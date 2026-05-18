@@ -1,5 +1,9 @@
-import DailyDocumentation from "@/app/components/DailyDocumentation";
+import SinkerGallery from "@/app/components/SinkerGallery";
+
+export const metadata = {
+  title: "Sinker Gallery — Oceantech Offshore Diving Services",
+};
 
 export default function Home() {
-  return <DailyDocumentation />;
+  return <SinkerGallery />;
 }

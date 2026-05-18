@@ -400,17 +400,19 @@ export default function DailyDocumentation() {
       </header>
 
       <div className="subbar">
-        <div className="subbar-inner">
-          <div className="subbar-label">Daily Log</div>
-          <Link href="/sinkers" className="gallery-link">
-            <svg viewBox="0 0 16 16" width={13} height={13} fill="none" style={{ flexShrink: 0 }}>
-              <rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
-              <rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
-              <rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
-              <rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
-            </svg>
-            Sinker Gallery
-          </Link>
+        <div className="subbar-inner subbar-daily">
+          <div className="subbar-top-row">
+            <div className="subbar-label">Daily Log</div>
+            <Link href="/" className="gallery-link">
+              <svg viewBox="0 0 16 16" width={13} height={13} fill="none" style={{ flexShrink: 0 }}>
+                <rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
+                <rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
+                <rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
+                <rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.4" />
+              </svg>
+              Sinker Gallery
+            </Link>
+          </div>
           <div className="day-strip-wrap">
             <div className="day-strip" ref={stripRef}>
               {PROJECT.days.map((d, i) => (
@@ -424,7 +426,7 @@ export default function DailyDocumentation() {
                 >
                   <span className="day-num">
                     <span className="day-dot" />
-                    {d.weekday.toUpperCase()}
+                    Day {d.id}
                   </span>
                   <span className="day-date">{d.dateShort}</span>
                 </button>

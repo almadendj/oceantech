@@ -79,7 +79,7 @@ export default function SinkerGallery() {
       <div className="subbar">
         <div className="subbar-inner" style={{ justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <Link href="/" className="gallery-back-link">
+            <Link href="/log" className="gallery-back-link">
               <svg viewBox="0 0 24 24" width={16} height={16} fill="none">
                 <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
