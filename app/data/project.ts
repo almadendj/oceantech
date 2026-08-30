@@ -788,10 +788,32 @@ export const PROJECT: Project = {
       photos: [],
       videos: [
         {
-          title: "Day 9 — Shallow-Section Installation & Repositioning",
-          desc: "Operations resumed on the shallow section of the pipeline. One sinker installed at 7 m, and one previously placed sinker repositioned to 8 m.",
+          title: "Day 9 — Shallow-Section Operations (Part 1 of 4)",
+          desc: "Operations resumed on the shallow section of the pipeline following the May campaign.",
+          youtubeId: "gSmPchd9gu4",
           color1: "#1F618D",
           color2: "#0C2438",
+        },
+        {
+          title: "Day 9 — Shallow-Section Operations (Part 2 of 4)",
+          desc: "Continued coverage of sinker installation at 7 m depth.",
+          youtubeId: "WlnDOKkSKS4",
+          color1: "#1F618D",
+          color2: "#0B2131",
+        },
+        {
+          title: "Day 9 — Shallow-Section Operations (Part 3 of 4)",
+          desc: "Repositioning of a previously placed sinker to 8 m depth.",
+          youtubeId: "5gYs84TRK7c",
+          color1: "#1D5C86",
+          color2: "#0A1E2D",
+        },
+        {
+          title: "Day 9 — Shallow-Section Operations (Part 4 of 4)",
+          desc: "Final segment of the day — securing and verification of placed units.",
+          youtubeId: "3DH3O8r5rHE",
+          color1: "#1B5680",
+          color2: "#091B29",
         },
       ],
       tasks: [
@@ -817,6 +839,7 @@ export const PROJECT: Project = {
         {
           title: "Day 10 — Dual Installation & Sinker Transfer",
           desc: "Two sinkers installed — one at 8 m and one at 5 m. A further sinker was transferred along the pipeline to the 5 m position in preparation for installation.",
+          youtubeId: "cQH2XgUo9d8",
           color1: "#21618C",
           color2: "#0B2233",
         },
@@ -920,5 +943,23 @@ export const DAYS_LOGGED = PROJECT.days.length;
 
 export const SINKERS_INSTALLED = PROJECT.days.reduce(
   (total, day) => total + day.sinkersInstalled,
+  0
+);
+
+/* ── August 2026 phase ───────────────────────────────────────────────── */
+
+export const AUGUST_PHASE_DAY_IDS = [9, 10, 11, 12, 13];
+
+export const AUGUST_DAYS = PROJECT.days.filter((day) =>
+  AUGUST_PHASE_DAY_IDS.includes(day.id)
+);
+
+export const AUGUST_SINKERS_INSTALLED = AUGUST_DAYS.reduce(
+  (total, day) => total + day.sinkersInstalled,
+  0
+);
+
+export const AUGUST_VIDEO_COUNT = AUGUST_DAYS.reduce(
+  (total, day) => total + day.videos.filter((v) => v.youtubeId).length,
   0
 );

@@ -1295,3 +1295,62 @@ html, body {
   .subbar-inner { flex-wrap: nowrap; }
   .gallery-link { padding: 4px 9px; font-size: 11px; }
 }
+
+/* ── August operations page ─────────────────────────────────────────── */
+.ao-day {
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0 32px;
+}
+
+.ao-day:first-child {
+  padding-top: 8px;
+}
+
+.ao-day:last-child {
+  border-bottom: none;
+}
+
+.ao-day .day-title {
+  font-size: 24px;
+}
+
+.ao-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--amber-bg);
+  border: 1px solid rgba(180, 83, 9, 0.22);
+  border-left: 3px solid var(--amber);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 22px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.ao-note-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--amber);
+}
+
+.ao-note strong {
+  font-weight: 600;
+  color: var(--amber);
+}
+
+.subbar-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .ao-day { padding: 20px 0 24px; }
+  .ao-day .day-title { font-size: 20px; }
+  .ao-note { font-size: 12.5px; padding: 11px 13px; }
+}

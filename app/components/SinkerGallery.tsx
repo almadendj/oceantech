@@ -121,8 +121,17 @@ export default function SinkerGallery() {
             <span style={{ color: "var(--border)" }}>|</span>
             <div className="subbar-label">Sinker Gallery</div>
           </div>
-          <div className="mono" style={{ fontSize: 12, color: "var(--text-muted)" }}>
-            {totalPhotos} photos · 30 sinkers
+          <div className="subbar-links">
+            <div className="mono" style={{ fontSize: 12, color: "var(--text-muted)" }}>
+              {totalPhotos} photos · 30 sinkers
+            </div>
+            <Link href="/august" className="gallery-link">
+              <svg viewBox="0 0 16 16" width={13} height={13} fill="none" style={{ flexShrink: 0 }}>
+                <rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
+                <path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+              </svg>
+              August Ops
+            </Link>
           </div>
         </div>
       </div>
