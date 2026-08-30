@@ -867,10 +867,18 @@ export const PROJECT: Project = {
       photos: [],
       videos: [
         {
-          title: "Day 11 — Installation & Shallow-Section Staging",
-          desc: "One sinker installed at 5 m. Three further sinkers prepared and staged for placement at the 5 m section.",
+          title: "Day 11 — Installation & Shallow-Section Staging (Part 1 of 2)",
+          desc: "Installation of one sinker at 5 m depth on the shallow section of the pipeline.",
+          youtubeId: "mrxwUxTO7EQ",
           color1: "#2471A3",
           color2: "#10344C",
+        },
+        {
+          title: "Day 11 — Installation & Shallow-Section Staging (Part 2 of 2)",
+          desc: "Preparation and staging of three further sinkers for placement at the 5 m section.",
+          youtubeId: "i7-kk11LzSQ",
+          color1: "#226C9B",
+          color2: "#0E2D43",
         },
       ],
       tasks: [
