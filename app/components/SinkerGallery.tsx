@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useMemo, useRef, useCallback } from "react";
-import { SINKER_GALLERY, FULL_VIDEO_ID, PROJECT } from "@/app/data/project";
+import { SINKER_GALLERY, FULL_VIDEO_ID, PROJECT, DAYS_LOGGED, SINKERS_INSTALLED } from "@/app/data/project";
 import type { Photo, Timestamp } from "@/app/data/project";
 import Lightbox from "@/app/components/Lightbox";
 
@@ -322,7 +322,7 @@ export default function SinkerGallery() {
       </main>
 
       <footer className="app-footer">
-        <div className="mono">OT-DOC-2026-001 · 8 Days Logged · 30 Sinkers Installed · Project Complete</div>
+        <div className="mono">OT-DOC-2026-001 · {DAYS_LOGGED} Days Logged · {SINKERS_INSTALLED} Sinkers Installed · Project Complete</div>
         <div className="footer-address">
           <span>© 2026 Oceantech Offshore Diving Services</span>
           <span className="footer-sep">·</span>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, useCallback } from "react";
-import { PROJECT, type Day, type Video, type DayStatus, type Photo } from "@/app/data/project";
+import { PROJECT, DAYS_LOGGED, SINKERS_INSTALLED, type Day, type Video, type DayStatus, type Photo } from "@/app/data/project";
 import Lightbox from "@/app/components/Lightbox";
 
 /* ── icons ──────────────────────────────────────────────────────────── */
@@ -461,7 +461,7 @@ export default function DailyDocumentation() {
       )}
 
       <footer className="app-footer">
-        <div className="mono">OT-DOC-2026-001 · 8 Days Logged · 30 Sinkers Installed · Project Complete</div>
+        <div className="mono">OT-DOC-2026-001 · {DAYS_LOGGED} Days Logged · {SINKERS_INSTALLED} Sinkers Installed · Project Complete</div>
         <div className="footer-address">
           <span>© 2026 Oceantech Offshore Diving Services</span>
           <span className="footer-sep">·</span>

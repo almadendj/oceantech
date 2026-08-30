@@ -775,5 +775,150 @@ export const PROJECT: Project = {
         "Dive team conducted final installation and deep-section consolidation operations. One sinker was successfully installed at depths exceeding 30 m. Following installation, all sinkers positioned at 25 m and beyond were interconnected and mechanically secured together to prevent displacement and lateral movement, ensuring structural integrity and long-term stability across the full deep-section pipeline span.",
       sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
     },
+    {
+      id: 9,
+      date: "18 August 2026",
+      dateShort: "18 Aug",
+      weekday: "Tuesday",
+      status: "complete",
+      sinkersInstalled: 1,
+      sinkersTotal: 31,
+      depthRange: "7–8 m",
+      teamSize: 7,
+      photos: [],
+      videos: [
+        {
+          title: "Day 9 — Shallow-Section Installation & Repositioning",
+          desc: "Operations resumed on the shallow section of the pipeline. One sinker installed at 7 m, and one previously placed sinker repositioned to 8 m.",
+          color1: "#1F618D",
+          color2: "#0C2438",
+        },
+      ],
+      tasks: [
+        { text: "Install 1 sinker at 7 m depth", done: true },
+        { text: "Reposition 1 sinker to 8 m depth", done: true },
+      ],
+      notes:
+        "Dive team of 7 resumed sinker installation operations on the shallow section of the pipeline. One sinker was successfully installed and secured at 7 m depth. In addition, one previously placed sinker was repositioned to 8 m depth and re-secured to the pipeline.",
+      sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
+    },
+    {
+      id: 10,
+      date: "24 August 2026",
+      dateShort: "24 Aug",
+      weekday: "Monday",
+      status: "complete",
+      sinkersInstalled: 2,
+      sinkersTotal: 33,
+      depthRange: "5–8 m",
+      teamSize: 7,
+      photos: [],
+      videos: [
+        {
+          title: "Day 10 — Dual Installation & Sinker Transfer",
+          desc: "Two sinkers installed — one at 8 m and one at 5 m. A further sinker was transferred along the pipeline to the 5 m position in preparation for installation.",
+          color1: "#21618C",
+          color2: "#0B2233",
+        },
+      ],
+      tasks: [
+        { text: "Install 1 sinker at 8 m depth", done: true },
+        { text: "Install 1 sinker at 5 m depth", done: true },
+        { text: "Transfer 1 sinker to the 5 m position", done: true },
+      ],
+      notes:
+        "Dive team of 7 continued shallow-section installation operations. Two sinkers were successfully installed and secured — one at 8 m and one at 5 m depth. Following installation, an additional sinker was transferred along the pipeline to the 5 m position in readiness for placement.",
+      sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
+    },
+    {
+      id: 11,
+      date: "25 August 2026",
+      dateShort: "25 Aug",
+      weekday: "Tuesday",
+      status: "complete",
+      sinkersInstalled: 1,
+      sinkersTotal: 34,
+      depthRange: "5 m",
+      teamSize: 7,
+      sinkersStaged: 3,
+      photos: [],
+      videos: [
+        {
+          title: "Day 11 — Installation & Shallow-Section Staging",
+          desc: "One sinker installed at 5 m. Three further sinkers prepared and staged for placement at the 5 m section.",
+          color1: "#2471A3",
+          color2: "#10344C",
+        },
+      ],
+      tasks: [
+        { text: "Install 1 sinker at 5 m depth", done: true },
+        { text: "Prepare 3 sinkers for placement at 5 m", done: true },
+      ],
+      notes:
+        "Dive team of 7 conducted shallow-section installation and preparation operations. One sinker was successfully installed and secured at 5 m depth. Following completion of diving operations, the team prepared a further 3 sinkers for placement at the 5 m section.",
+      sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
+    },
+    {
+      id: 12,
+      date: "26 August 2026",
+      dateShort: "26 Aug",
+      weekday: "Wednesday",
+      status: "complete",
+      sinkersInstalled: 1,
+      sinkersTotal: 35,
+      depthRange: "5–15 m",
+      teamSize: 7,
+      sinkersStaged: 2,
+      photos: [],
+      videos: [
+        {
+          title: "Day 12 — Installation & Mid-Depth Preparation",
+          desc: "One sinker installed at 5 m. Two further sinkers prepared for placement at the 5 m and 15 m sections.",
+          color1: "#1A5276",
+          color2: "#0A2233",
+        },
+      ],
+      tasks: [
+        { text: "Install 1 sinker at 5 m depth", done: true },
+        { text: "Prepare 2 sinkers for placement at 5 m and 15 m", done: true },
+      ],
+      notes:
+        "Dive team of 7 continued installation and preparation operations. One sinker was successfully installed and secured at 5 m depth. Following completion of diving operations, the team prepared a further 2 sinkers for placement at the 5 m and 15 m sections.",
+      sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
+    },
+    {
+      id: 13,
+      date: "27 August 2026",
+      dateShort: "27 Aug",
+      weekday: "Thursday",
+      status: "complete",
+      sinkersInstalled: 2,
+      sinkersTotal: 37,
+      depthRange: "7–15 m",
+      teamSize: 7,
+      photos: [],
+      videos: [
+        {
+          title: "Day 13 — Shallow & Mid-Depth Installation",
+          desc: "Two sinkers installed across the shallow and mid-depth sections — one at 7 m and one at 15 m.",
+          color1: "#17527A",
+          color2: "#08192B",
+        },
+      ],
+      tasks: [
+        { text: "Install 1 sinker at 7 m depth", done: true },
+        { text: "Install 1 sinker at 15 m depth", done: true },
+      ],
+      notes:
+        "Dive team of 7 conducted installation operations across the shallow and mid-depth sections of the pipeline. Two sinkers were successfully installed and secured — one at 7 m and one at 15 m depth. All units confirmed properly aligned and attached in accordance with project specifications.",
+      sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
+    },
   ],
 };
+
+export const DAYS_LOGGED = PROJECT.days.length;
+
+export const SINKERS_INSTALLED = PROJECT.days.reduce(
+  (total, day) => total + day.sinkersInstalled,
+  0
+);
