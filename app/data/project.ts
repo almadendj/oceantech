@@ -936,6 +936,7 @@ export const PROJECT: Project = {
         {
           title: "Day 13 — Shallow & Mid-Depth Installation",
           desc: "Two sinkers installed across the shallow and mid-depth sections — one at 7 m and one at 15 m.",
+          youtubeId: "TW9NUC3VjW4",
           color1: "#17527A",
           color2: "#08192B",
         },
