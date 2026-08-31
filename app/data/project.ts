@@ -8,9 +8,13 @@ export interface Video {
   color2: string;
 }
 
+export type TaskKind = "install" | "reposition" | "transfer" | "prepare";
+
 export interface Task {
   text: string;
   done: boolean;
+  /** Classification of the work, derived from the task text itself. */
+  kind?: TaskKind;
 }
 
 export interface Photo {
@@ -784,7 +788,7 @@ export const PROJECT: Project = {
       sinkersInstalled: 1,
       sinkersTotal: 31,
       depthRange: "7–8 m",
-      teamSize: 7,
+      teamSize: 5,
       photos: [],
       videos: [
         {
@@ -817,11 +821,11 @@ export const PROJECT: Project = {
         },
       ],
       tasks: [
-        { text: "Install 1 sinker at 7 m depth", done: true },
-        { text: "Reposition 1 sinker to 8 m depth", done: true },
+        { text: "Install 1 sinker at 7 m depth", done: true, kind: "install" },
+        { text: "Reposition 1 sinker to 8 m depth", done: true, kind: "reposition" },
       ],
       notes:
-        "Dive team of 7 resumed sinker installation operations on the shallow section of the pipeline. One sinker was successfully installed and secured at 7 m depth. In addition, one previously placed sinker was repositioned to 8 m depth and re-secured to the pipeline.",
+        "Dive team of 5 resumed sinker installation operations on the shallow section of the pipeline. One sinker was successfully installed and secured at 7 m depth. In addition, one previously placed sinker was repositioned to 8 m depth and re-secured to the pipeline.",
       sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
     },
     {
@@ -833,7 +837,7 @@ export const PROJECT: Project = {
       sinkersInstalled: 2,
       sinkersTotal: 33,
       depthRange: "5–8 m",
-      teamSize: 7,
+      teamSize: 5,
       photos: [],
       videos: [
         {
@@ -845,12 +849,12 @@ export const PROJECT: Project = {
         },
       ],
       tasks: [
-        { text: "Install 1 sinker at 8 m depth", done: true },
-        { text: "Install 1 sinker at 5 m depth", done: true },
-        { text: "Transfer 1 sinker to the 5 m position", done: true },
+        { text: "Install 1 sinker at 8 m depth", done: true, kind: "install" },
+        { text: "Install 1 sinker at 5 m depth", done: true, kind: "install" },
+        { text: "Transfer 1 sinker to the 5 m position", done: true, kind: "transfer" },
       ],
       notes:
-        "Dive team of 7 continued shallow-section installation operations. Two sinkers were successfully installed and secured — one at 8 m and one at 5 m depth. Following installation, an additional sinker was transferred along the pipeline to the 5 m position in readiness for placement.",
+        "Dive team of 5 continued shallow-section installation operations. Two sinkers were successfully installed and secured — one at 8 m and one at 5 m depth. Following installation, an additional sinker was transferred along the pipeline to the 5 m position in readiness for placement.",
       sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
     },
     {
@@ -862,7 +866,7 @@ export const PROJECT: Project = {
       sinkersInstalled: 1,
       sinkersTotal: 34,
       depthRange: "5 m",
-      teamSize: 7,
+      teamSize: 5,
       sinkersStaged: 3,
       photos: [],
       videos: [
@@ -882,11 +886,11 @@ export const PROJECT: Project = {
         },
       ],
       tasks: [
-        { text: "Install 1 sinker at 5 m depth", done: true },
-        { text: "Prepare 3 sinkers for placement at 5 m", done: true },
+        { text: "Install 1 sinker at 5 m depth", done: true, kind: "install" },
+        { text: "Prepare 3 sinkers for placement at 5 m", done: true, kind: "prepare" },
       ],
       notes:
-        "Dive team of 7 conducted shallow-section installation and preparation operations. One sinker was successfully installed and secured at 5 m depth. Following completion of diving operations, the team prepared a further 3 sinkers for placement at the 5 m section.",
+        "Dive team of 5 conducted shallow-section installation and preparation operations. One sinker was successfully installed and secured at 5 m depth. Following completion of diving operations, the team prepared a further 3 sinkers for placement at the 5 m section.",
       sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
     },
     {
@@ -898,7 +902,7 @@ export const PROJECT: Project = {
       sinkersInstalled: 1,
       sinkersTotal: 35,
       depthRange: "5–15 m",
-      teamSize: 7,
+      teamSize: 5,
       sinkersStaged: 2,
       photos: [],
       videos: [
@@ -910,11 +914,11 @@ export const PROJECT: Project = {
         },
       ],
       tasks: [
-        { text: "Install 1 sinker at 5 m depth", done: true },
-        { text: "Prepare 2 sinkers for placement at 5 m and 15 m", done: true },
+        { text: "Install 1 sinker at 5 m depth", done: true, kind: "install" },
+        { text: "Prepare 2 sinkers for placement at 5 m and 15 m", done: true, kind: "prepare" },
       ],
       notes:
-        "Dive team of 7 continued installation and preparation operations. One sinker was successfully installed and secured at 5 m depth. Following completion of diving operations, the team prepared a further 2 sinkers for placement at the 5 m and 15 m sections.",
+        "Dive team of 5 continued installation and preparation operations. One sinker was successfully installed and secured at 5 m depth. Following completion of diving operations, the team prepared a further 2 sinkers for placement at the 5 m and 15 m sections.",
       sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
     },
     {
@@ -926,7 +930,7 @@ export const PROJECT: Project = {
       sinkersInstalled: 2,
       sinkersTotal: 37,
       depthRange: "7–15 m",
-      teamSize: 7,
+      teamSize: 5,
       photos: [],
       videos: [
         {
@@ -937,11 +941,11 @@ export const PROJECT: Project = {
         },
       ],
       tasks: [
-        { text: "Install 1 sinker at 7 m depth", done: true },
-        { text: "Install 1 sinker at 15 m depth", done: true },
+        { text: "Install 1 sinker at 7 m depth", done: true, kind: "install" },
+        { text: "Install 1 sinker at 15 m depth", done: true, kind: "install" },
       ],
       notes:
-        "Dive team of 7 conducted installation operations across the shallow and mid-depth sections of the pipeline. Two sinkers were successfully installed and secured — one at 7 m and one at 15 m depth. All units confirmed properly aligned and attached in accordance with project specifications.",
+        "Dive team of 5 conducted installation operations across the shallow and mid-depth sections of the pipeline. Two sinkers were successfully installed and secured — one at 7 m and one at 15 m depth. All units confirmed properly aligned and attached in accordance with project specifications.",
       sig: "RO Sinker Installation — Punta Engaño, Lapu-Lapu City, Cebu",
     },
   ],
@@ -970,4 +974,61 @@ export const AUGUST_SINKERS_INSTALLED = AUGUST_DAYS.reduce(
 export const AUGUST_VIDEO_COUNT = AUGUST_DAYS.reduce(
   (total, day) => total + day.videos.filter((v) => v.youtubeId).length,
   0
+);
+
+/** Overall working-depth envelope for the August phase, derived from each
+ *  day's recorded depthRange rather than hardcoded. */
+export const AUGUST_DEPTH_RANGE = (() => {
+  const depths = AUGUST_DAYS.flatMap((day) =>
+    (day.depthRange.match(/\d+(?:\.\d+)?/g) ?? []).map(Number)
+  );
+  const min = Math.min(...depths);
+  const max = Math.max(...depths);
+  return min === max ? `${min} m` : `${min}–${max} m`;
+})();
+
+/** Cumulative total before the August phase began. */
+export const AUGUST_START_TOTAL =
+  AUGUST_DAYS[0].sinkersTotal - AUGUST_DAYS[0].sinkersInstalled;
+
+/** Last day of the August phase for which a log entry exists. */
+export const AUGUST_LAST_DAY = AUGUST_DAYS[AUGUST_DAYS.length - 1];
+
+export interface AugustClip {
+  /** Stable key: day id + index within that day. */
+  key: string;
+  dayId: number;
+  dateShort: string;
+  weekday: string;
+  /** 1-based position within the day's own clip set. */
+  part: number;
+  partsInDay: number;
+  video: Video;
+  youtubeId: string;
+  /** Title with the day prefix and part suffix stripped — the clip index
+   *  already shows both, so the rail row stays on a single line. */
+  railLabel: string;
+}
+
+/** Flat, ordered playlist of every August clip that actually has footage. */
+export const AUGUST_CLIPS: AugustClip[] = AUGUST_DAYS.flatMap((day) => {
+  const published = day.videos.filter((v) => v.youtubeId);
+  return published.map((video, i) => ({
+    key: `${day.id}-${i}`,
+    dayId: day.id,
+    dateShort: day.dateShort,
+    weekday: day.weekday,
+    part: i + 1,
+    partsInDay: published.length,
+    video,
+    youtubeId: video.youtubeId as string,
+    railLabel: video.title
+      .replace(/^Day\s+\d+\s+—\s+/, "")
+      .replace(/\s*\(Part\s+\d+\s+of\s+\d+\)$/, ""),
+  }));
+});
+
+/** August days with no published footage on file. */
+export const AUGUST_DAYS_WITHOUT_FOOTAGE = AUGUST_DAYS.filter((day) =>
+  day.videos.every((v) => !v.youtubeId)
 );

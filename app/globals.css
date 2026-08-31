@@ -1318,9 +1318,9 @@ html, body {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  background: var(--amber-bg);
-  border: 1px solid rgba(180, 83, 9, 0.22);
-  border-left: 3px solid var(--amber);
+  background: var(--light-blue-2);
+  border: 1px solid var(--light-blue);
+  border-left: 3px solid var(--accent);
   border-radius: 6px;
   padding: 12px 16px;
   margin-bottom: 22px;
@@ -1334,12 +1334,12 @@ html, body {
   align-items: center;
   flex-shrink: 0;
   margin-top: 1px;
-  color: var(--amber);
+  color: var(--accent);
 }
 
 .ao-note strong {
   font-weight: 600;
-  color: var(--amber);
+  color: var(--navy);
 }
 
 .subbar-links {
@@ -1353,4 +1353,243 @@ html, body {
   .ao-day { padding: 20px 0 24px; }
   .ao-day .day-title { font-size: 20px; }
   .ao-note { font-size: 12.5px; padding: 11px 13px; }
+}
+
+/* ── August showcase: player caption, clip rail, ops table ──────────── */
+.badge-info {
+  background: var(--light-blue-2);
+  color: var(--navy);
+  border: 1px solid var(--light-blue);
+}
+
+.ao-player-caption {
+  padding: 2px;
+}
+.ao-player-day {
+  font-size: 10.5px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.ao-player-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+.ao-player-desc {
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 68ch;
+}
+
+.ao-rail-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 14px;
+  background: var(--soft-gray);
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--navy);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.ao-rail-group-count {
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+  text-transform: none;
+}
+.ao-rail-empty {
+  padding: 9px 14px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-style: italic;
+  border-bottom: 1px solid var(--border);
+}
+
+.ao-play-day {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--navy);
+  border: 1px solid var(--navy);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.ao-play-day:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.ao-table-wrap {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow-x: auto;
+  background: #fff;
+  margin-bottom: 8px;
+}
+.ao-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.ao-table th {
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--soft-gray);
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.ao-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+.ao-table tbody tr:hover { background: var(--light-blue-2); }
+.ao-table tbody tr:last-child td { border-bottom: none; }
+.ao-table .ao-num { text-align: right; white-space: nowrap; }
+.ao-table th.ao-num { text-align: right; }
+.ao-table .ao-muted { color: var(--text-muted); }
+.ao-table tfoot td {
+  padding: 11px 14px;
+  border-top: 2px solid var(--border);
+  background: var(--soft-gray);
+  font-weight: 600;
+  font-size: 12.5px;
+}
+.ao-table-date {
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ao-table-date:hover { color: var(--accent); text-decoration: underline; }
+.ao-table-weekday {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.ao-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-width: 46ch;
+}
+.ao-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  background: var(--soft-gray);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.ao-chip-kind {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.ao-chip-install {
+  background: var(--green-bg);
+  border-color: rgba(22, 163, 74, 0.25);
+}
+.ao-chip-install .ao-chip-kind { color: var(--green); }
+.ao-chip-reposition,
+.ao-chip-transfer {
+  background: var(--light-blue-2);
+  border-color: var(--light-blue);
+}
+.ao-chip-reposition .ao-chip-kind,
+.ao-chip-transfer .ao-chip-kind { color: var(--accent); }
+.ao-chip-prepare {
+  background: var(--amber-bg);
+  border-color: rgba(180, 83, 9, 0.22);
+}
+.ao-chip-prepare .ao-chip-kind { color: var(--amber); }
+
+.ao-staged-note {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.ao-staged-count {
+  font-weight: 600;
+  color: var(--amber);
+}
+.ao-staged-sub {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .ao-player-title { font-size: 14.5px; }
+  .ao-player-desc { font-size: 12.5px; }
+  .ao-table { font-size: 12.5px; }
+}
+
+/* Clip rail: one line per clip so the full index fits beside the player */
+.ao-video-index {
+  max-height: 600px;
+}
+/* No trailing rule against the container edge */
+.ao-video-index .sg-video-index-list > div:last-child .ao-rail-empty,
+.ao-video-index .sg-video-index-list > div:last-child .sg-ts-item:last-child {
+  border-bottom: none;
+}
+.ao-clip-item {
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.ao-clip-item .sg-ts-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
+}
+.ao-clip-item .sg-ts-time {
+  min-width: 26px;
+}
+
+/* Day records: summary and tasks side by side */
+.ao-summary-grid {
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .ao-video-index { max-height: 300px; }
+  .ao-summary-grid { grid-template-columns: 1fr; }
 }
